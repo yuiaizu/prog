@@ -1,0 +1,95 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+}
+header{
+    background-color: #FFFFE0;;
+    border-bottom: 1px solid #fff;
+    text-align: center;
+}
+main{
+    border-bottom:1px solid #F0E68C;
+}
+footer{
+    background-color: #f3e778;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+}
+p{
+    font-size:200%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:200px;
+}
+ul{
+    padding: 0;
+    border-top: 1px solid #000000;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:100%;
+}
+li{
+    text-align: center;
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #ffe;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+}
+li:hover{
+    background: #faeda3;
+    color:#fff;
+}
+div p{
+    display: inline-block;
+}
+#gazou{
+    position: relative;
+    top: 0px;
+    left: 200px;
+}
+#gazou2{
+    position: relative;
+    top: 0px;
+    left: 350px;
+}
+#zibun{
+    position: relative;
+    top: 50px;
+    left: 780px;
+}
+#kikai{
+    position: relative;
+    top: 50px;
+    left: -50px;
+}
+#pc_hands{
+    position: relative;
+    top: 50px;
+    left: 350px;
+    font-weight: bold;
+}
+#pc_hands2{
+    position: relative;
+    top: 50px;
+    left: 760px;
+    font-weight: bold;
+}
+h1{
+    font-size: 60px;
+    font-weight: bold;
+} 
+h1:first-letter{
+    font-weight: bold;
+    font-size: 80px;
+    color: red;
+}
+body{
+	background-color: #FFFFE0;
+}
+#judgment{
+    font-weight: bold;
+    font-size: 45px;
+}
