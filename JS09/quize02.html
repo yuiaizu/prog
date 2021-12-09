@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>クイズ練習（複数）</title>
+</head>
+<body>
+
+<header>
+    <h1>クイズ練習（複数）</h1>
+    <h2></h2>
+</header>
+
+<main>
+  <p id="quest">ここに問題が出題されます</p>
+  <p>
+    <input type="radio" name="toi" value="1"><span id="toi1">選択肢１</span>
+    <input type="radio" name="toi" value="2"><span id="toi2">選択肢２</span>
+    <input type="radio" name="toi" value="3"><span id="toi3">選択肢３</span>
+  </p>
+</main>
+
+<!-- <footer></footer> -->
+<script>
+//ここから記述領域［START］
+
+  //以下に配列を記述してください。
+  //問題文[配列]
+  const qs = [
+    "通るときには閉まって、通らないときには開いているものは何？",
+    "話すことがとても好きな道具は何？",
+    "世界の真ん中にいる虫は何？",
+    "デパートで、化粧品売り場が一階にあることが多いのはなぜ？",
+    "江戸時代に実際に存在した店は？",
+    "次のうち、世界共通の音は？"
+  ]
+
+    
+  //回答選択肢[多重配列]
+  const toi = [
+    ["踏み切り","洗濯機","冷蔵庫"],
+    ["スプーン","シャベル","しゃもじ"],
+    ["てんとう虫","カマキリ","蚊"],
+    ["匂いを充満させないため","対象となる客が上がってこないから","一階のほうが見栄えするため"],
+    ["人力車のレンタル店","100均のような店","朝鮮への旅行代理店"],
+    ["電話を掛けるときの音","ファックスを送る時の音","コンビニに入る時の入店音"]
+  ]
+    
+  //答え[配列]
+  const ans = [1, 2, 3, 1, 2, 2]
+
+  //1.最初の問題文＆回答選択肢＆回答値を設定
+  let i = 0;//ここは変わる変数に
+
+  $("#quest").text( qs[i]);
+  $("#toi1").text(toi[i][0]);
+  $("#toi2").text(toi[i][1]);
+  $("#toi3").text(toi[i][2]);  
+    
+  let count = 1;//正解数表示
+  let kazu = 0;//最後の正解数
+  let Q = 1;//その都度のクイズ数
+  //2.ラジオボタンをクリックしたらイベント発生！(クリックイベント)
+  $("h1").text("問"+Q);
+  $("[name=toi]").on("click",function(){
+    Q++;
+    $("h1").text("問"+Q);
+    const v = $(this).val();
+    if(i<6){
+      if(ans[i] == v){
+        alert("正解")
+        $("h2").text("正解数：" + count);
+        count++;
+        kazu++;
+        }else{
+        alert("不正解");
+      }  
+    }
+    i++;//配列に入れるiが１プラスされる。
+
+  if (i == 6) {
+    $("h1").text("問題は以上です。正解数は" + kazu + "問です。");
+  }else if(i < 6){
+    $("#quest").text( qs[i]);
+    $("#toi1").text(toi[i][0]);
+    $("#toi2").text(toi[i][1]);
+    $("#toi3").text(toi[i][2]);    
+  }else{
+    $("h1").text("このページは終了しました");
+    alert("最初からやり直しましょう。");
+  }
+  })
+//ここまでが記述領域［END］
+</script>
+</body>
+</html>
