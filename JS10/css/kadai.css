@@ -1,0 +1,45 @@
+body{
+    background-color: rgb(239, 240, 172);
+}
+
+h1{
+    font-weight:bold; 
+}
+
+.btn-square {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #276bff;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+.btn-square:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+.active{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #276bff;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+.active:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+#drowarea{
+    background-color: #ffffff;
+}
