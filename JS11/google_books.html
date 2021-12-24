@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang=ja>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoogleBooksAPIでAjaxを学ぶ</title>
+    <style>
+        td{
+            border-bottom: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book検索</h1>
+    <div>
+        <input type="text" id="key">
+        <button id=send>検索</button>
+    </div>
+    <div>
+        <table id = "list">
+            <tr>
+                <td style="width: 400px">書籍名</td>
+                <td style="width: 200px">出版社</td>
+                <td style="width: 400px">画像</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- GoogleBooksAPIにアクセスできるurl -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        //検索ボタンをクリックすると
+        $("#send").on("click",function(){
+            const url = "https://www.googleapis.com/books/v1/volumes?q="+$("#key").val();
+            $.ajax({
+                url: url,
+                dataType: "json"//下の（）にdataを入れるとjsonデータをオブジェクトに自動で変換してくれるコード
+            //オブジェクトではないとコードが出てきてしまう。
+            }).done(function(data) {
+                //書籍名、出版社、サムネイル｛リンク｝
+                console.log(data);           //オブジェクトの中のコンソールを確認
+                //バッククォート｛``｝shift + @;
+                const len = data.items.length;//itemのデータの数を取得
+                let html;
+                for(let i=0; i<len; i++){
+                    console.log(typeof data.items[i].volumeInfo.publisher);
+                    if(typeof data.items[i].volumeInfo.publisher=="undefined"){
+                        data.items[i].volumeInfo.publisher="出版社（不明）";
+                }
+                //let htmlにすると上書き保存されてしまうため下の形に
+                html += `
+                    <tr>
+                        <td>${data.items[i].volumeInfo.title}</td>
+                        <td>${data.items[i].volumeInfo.publisher}</td>
+                        <td>
+                            <a target="_blank" href="${data.items[i].volumeInfo.infoLink}">
+                            <img src="${data.items[i].volumeInfo.imageLinks.thumbnail}">
+                            </a>
+                        </td>
+                    </tr>
+                `;
+                }
+                //target="_blank"で別タグに飛ぶ
+                //$("#list").empty();//検索を変えると今までの履歴を消してくれる。
+                //table要素のid="list"に追加
+                $("#list").empty().hide().append(html).fadeIn(1000);
+            });
+       })
+    
+    
+    
+    
+    </script>
+    
+</body>
+</html>
