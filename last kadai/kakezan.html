@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/time.css">
+<title>掛け算習得</title>
+</head>
+
+<div class="qs">
+  <form name="form1">
+  <input type="text" id="a" size="30" value=""> ×
+  <input type="text" id="b" size="30" value=""> = 
+  <input type="text" name="c" id="c" size="10" onKeyPress="jedge();">
+  </form>
+</div>
+
+<center>
+<div class="popup">
+  <div class="content">
+  <p>あなたのスコアは<spam id=score></spam>点です！</p>
+  <button id="close">スタート画面に戻る</button>
+</div>
+</div>
+<p style="font-size: 40px; font-weight: 200; font-family: cursive;">スコア: <span id="tensuu">0</span>点　経過時間: <span id="time">0.0</span>秒</p>
+<button id="start" class="btn-square" style="font-size: 20px;">start</button>  
+</center>
+
+
+
+<script>
+
+var startTime;
+var timecounter;
+var score = 0;
+var tensuu = 0;
+
+$("#start").on("click",function(){
+  score = 0;
+  document.getElementById("score").innerHTML = score;
+  document.getElementById("tensuu").innerHTML = tensuu;
+  startTime = (new Date()).getTime();
+  timer();
+  document.form1.c.focus();
+  genProblem();
+})
+
+function timer(){
+  displayTime = (new Date()).getTime() - startTime;
+  document.getElementById("time").innerHTML = (displayTime / 1000).toFixed(1); 
+  timecounter = setTimeout(timer, 100);
+  if (displayTime >= 1000 * 10){
+  gameover();
+  }
+}
+
+function genProblem(){
+  document.getElementById("a").value = Math.floor(Math.random() * 9) + 1;
+  document.getElementById("b").value = Math.floor(Math.random() * 9) + 1;
+  document.getElementById("c").value = "";
+}
+
+function jedge(){
+  if(window.event.keyCode == 13){
+    // a, b, cの値を取得する
+    a = Number(document.getElementById("a").value);
+    b = Number(document.getElementById("b").value);
+    c = Number(document.getElementById("c").value);
+
+    // 正解➡スコアに点を加える
+    if(a*b == c){  
+      score += 10;
+      tensuu += 10;
+      document.getElementById("score").innerHTML = score; 
+      document.getElementById("tensuu").innerHTML = tensuu; 
+      genProblem();
+    }
+    // 不正解➡回答欄クリア
+    else{document.getElementById("c").value = "";}
+  }
+}
+
+// function gameover(){
+//     location.href = 'owari.html';
+// }
+
+$('.modal_pop').hide();
+function gameover(){
+  document.getElementById("a").value = "";
+  document.getElementById("b").value = "";
+  clearTimeout(timecounter);
+  $('.popup').fadeIn();
+  }  
+  $("#close").on("click", function() {
+  $(".popup").fadeOut();
+  location.href = 'start.html';
+  // return false;
+});
+
+
+</script>
+</body>
+</html>
