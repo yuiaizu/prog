@@ -1,0 +1,90 @@
+.qs{   
+    font-size: 50px;
+    font-weight: 400;
+    text-align:center;
+    padding:10px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+}
+
+.qs input{
+    font-size: 50px;
+    display: inline-block;
+    border: 5px solid #515152;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    background: #f2f2f2;
+    vertical-align: middle;
+    text-align:center;
+    padding:60px 0;
+}
+
+.zikan{
+    border-bottom: black;
+}
+
+body {
+    background-image: url("https://illust.download/wp-content/uploads/2017/05/background122.jpg");
+    background-size: cover;
+    background-attachment: fixed;         /* 固定 */
+    background-position: center center;   /* 縦横中央 */
+}
+
+.popup {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    background: black;
+    opacity: 0.7;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.content {
+    background: #fff;
+    /* padding: 30px;
+    width: 50%; */
+    position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+   
+	padding: 15px 30px;
+	background: rgba(0,0,0,0.4);
+	color: #fff;
+	text-align: center;
+	width: 300px;
+}
+
+.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-square {
+    padding:10px 0;
+    position: absolute;
+    top: 80%;
+    left: 45%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+    display: inline-block;
+    padding: 1em 2.5em;
+    text-decoration: none;
+    background: #5c36c5;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+.btn-square {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
